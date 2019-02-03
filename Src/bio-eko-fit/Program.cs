@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Src
+namespace bio_eko_fit
 {
     class Program
     {
