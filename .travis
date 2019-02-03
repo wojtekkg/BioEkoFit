@@ -1,2 +1,4 @@
 language: csharp
-solution: Src/bio-eko-fit.sln
+solution: bio-eko-fit.sln
+mono: 
+    - latest
