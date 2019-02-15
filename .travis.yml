@@ -1,4 +1,9 @@
 language: csharp
 solution: bio-eko-fit.sln
-mono: 
-    - latest
+mono: none
+sudo: required
+dotnet: 2.2
+dist: xenial
+script:
+    - dotnet restore
+    - dotnet build
