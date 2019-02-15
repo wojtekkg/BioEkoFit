@@ -11,7 +11,6 @@ namespace bio_eko_fit_products
         IBusClient _client;
         public ProductsService(IBusClient client)
         {
-            Console.WriteLine("Constructor");
             _client = client;
             ServiceInitialization();
         }

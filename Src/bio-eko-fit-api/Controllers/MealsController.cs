@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,43 +15,38 @@ namespace bio_eko_fit_api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class MealsController : ControllerBase
     {
         private readonly IBusClient _client;
-        public ProductsController(IBusClient client)
+        public MealsController(IBusClient client)
         {
             _client = client;
         }
 
-        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> GetMeals()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<string>> Get(int id)
+        public ActionResult<string> GetMeals(int id)
         {
-            return await _client.RequestAsync<Product, string>(new Product("Czosnek"));
+            return "DUPA";
         }
         
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void CreateMeal([FromBody] string value)
         {
         }
 
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void UpdateMeal(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void DeleteMeal(int id)
         {
         }
     }
