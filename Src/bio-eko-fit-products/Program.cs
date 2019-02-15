@@ -23,8 +23,8 @@ namespace bio_eko_fit_products
 
             //TODO: Find a way to run service without that, or with that but inside UseProductsService() method
             host.Services.GetService(typeof(IProductsService));
-            
-            host.Start();
+            Console.WriteLine("Products service started");
+            host.Run();
         }
     }
 }
