@@ -13,6 +13,12 @@ namespace bio_eko_fit_menus
         public MenusService(IBusClient client)
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
+            ServiceInitialization();
+        }
+    
+        private void ServiceInitialization()
+        {
+            Console.WriteLine($"{nameof(MenusService)} initialized.");
         }
     }
 }

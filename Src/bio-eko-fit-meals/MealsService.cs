@@ -13,6 +13,12 @@ namespace bio_eko_fit_meals
         public MealsService(IBusClient client)
         {
             _client = client ?? throw new ArgumentNullException(nameof(client));
+            ServiceInitialization();
+        }
+
+        private void ServiceInitialization()
+        {
+            Console.WriteLine($"{nameof(MealsService)} initialized.");
         }
     }
 }

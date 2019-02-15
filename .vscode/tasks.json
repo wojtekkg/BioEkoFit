@@ -3,11 +3,9 @@
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet",
-            "type": "process",
+            "command": "dotnet clean; dotnet build",
+            "type": "shell",
             "args": [
-                "build",
-                "${workspaceFolder}/bio-eko-fit-products.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
