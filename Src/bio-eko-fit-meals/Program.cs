@@ -18,7 +18,7 @@ namespace bio_eko_fit_meals
             .UseIISIntegration()
             .UseMealsService()
             .UseStartup<Startup>()
-            .UseUrls("http://localhost:5010/")
+            .UseUrls("http://localhost:5011/")
             .Build();
 
             //TODO: Find a way to run service without that, or with that but inside UseMealsService() method
