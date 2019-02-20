@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{1E512800-4BA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-dto", "Src\bio-eko-fit-dto\bio-eko-fit-dto.csproj", "{637C2BED-83F7-498C-A850-D97F47A9F382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-database", "Src\bio-eko-fit-database\bio-eko-fit-database.csproj", "{49705745-57D7-4E41-B9E7-E154291917A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-database", "Src\bio-eko-fit-products-database\bio-eko-fit-products-database.csproj", "{49705745-57D7-4E41-B9E7-E154291917A4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{19E605E4-6D54-45A8-8217-63BA466F8AA0}"
 EndProject
