@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\bio-eko-fit-dto\bio-eko-fit-dto.csproj" />
+    <ProjectReference Include="..\bio-eko-fit-products-database\bio-eko-fit-products-database.csproj" />
   </ItemGroup>
 
   <ItemGroup>

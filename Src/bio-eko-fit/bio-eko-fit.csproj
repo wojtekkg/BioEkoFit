@@ -14,7 +14,6 @@
 
     <ItemGroup>
     <ProjectReference Include="..\bio-eko-fit-api\bio-eko-fit-api.csproj" />
-    <ProjectReference Include="..\bio-eko-fit-database\bio-eko-fit-database.csproj" />
     <ProjectReference Include="..\bio-eko-fit-dto\bio-eko-fit-dto.csproj" />
     <ProjectReference Include="..\bio-eko-fit-products\bio-eko-fit-products.csproj" />
     <ProjectReference Include="..\bio-eko-fit-meals\bio-eko-fit-meals.csproj" />

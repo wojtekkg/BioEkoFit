@@ -16,7 +16,7 @@ namespace bio_eko_fit_products
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
-            .UseProductsService()
+            .UseProductsService("User ID=postgres;Password=1234Qwer;Host=localhost;Port=5432;Database=Products")
             .UseStartup<Startup>()
             .UseUrls("http://localhost:5010/")
             .Build();
