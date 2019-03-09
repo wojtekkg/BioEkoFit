@@ -1,0 +1,17 @@
+.products {
+    margin: 20px 0;
+  }
+  
+  .products-header {
+    display: flex;
+    line-height: 24px;
+    font-size: 16px;
+    padding: 0 10px;
+    justify-content: space-between;
+  }
+  
+  .products-header > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 5px;
+  }
