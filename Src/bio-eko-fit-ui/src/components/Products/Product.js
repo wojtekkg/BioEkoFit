@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { doRemoveProduct } from '../actions/products';
+import { doRemoveProduct } from '../../actions/products';
 import './Product.css';
+import { Button } from 'react-bootstrap';
 
 
 const Product = ({ product, columns, removeProduct }) => {
@@ -14,7 +15,7 @@ const Product = ({ product, columns, removeProduct }) => {
         <div className="product">
             <span style={{ width: columns.id.width}}>{id}</span>
             <span style={{ width: columns.name.width}}>{name}</span>
-            <span style={{ width: columns.actions.width}}><button onClick={() => removeProduct(id)}>Usuń</button></span>
+            <span style={{ width: columns.actions.width}}><Button variant="danger" onClick={() => removeProduct(id)}>Usuń</Button></span>
         </div>
     );
 }

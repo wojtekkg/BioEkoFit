@@ -37,9 +37,9 @@ namespace bio_eko_fit_api.Controllers
         }
         
         [HttpPost]
-        public async Task<bool> Post([FromBody] string value)
+        public async Task<bool> Post([FromBody] Product product)
         {
-            return await _client.RequestAsync<CreateProductRequest, bool>(new CreateProductRequest { Name = value } );
+            return await _client.RequestAsync<CreateProductRequest, bool>(new CreateProductRequest { Name = product.Name } );
         }
 
         [HttpPut("{id}")]

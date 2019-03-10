@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route } from "react-router-dom";
 
-import Products from './Products';
-import Meals from './Meals';
-import Menus from './Menus';
+import Products from './Products/Products';
+import Meals from './Meals/Meals';
+import Menus from './Menus/Menus';
 
 const PageContent = () => 
     <Switch>
