@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <RootNamespace>bio_eko_fit</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,13 +13,9 @@
     <PackageReference Include="rawrabbit.vnext" Version="1.10.4" />
   </ItemGroup>
 
-    <ItemGroup>
-    <ProjectReference Include="..\bio-eko-fit-api\bio-eko-fit-api.csproj" />
+  <ItemGroup>
     <ProjectReference Include="..\bio-eko-fit-dto\bio-eko-fit-dto.csproj" />
-    <ProjectReference Include="..\bio-eko-fit-products\bio-eko-fit-products.csproj" />
-    <ProjectReference Include="..\bio-eko-fit-meals\bio-eko-fit-meals.csproj" />
-    <ProjectReference Include="..\bio-eko-fit-menus\bio-eko-fit-menus.csproj" />
-  
+    <ProjectReference Include="..\bio-eko-fit-database\bio-eko-fit-database.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +23,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>

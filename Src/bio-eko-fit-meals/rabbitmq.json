@@ -1,7 +1,0 @@
-{
-    "Username": "user",
-    "Password": "bitnami",
-    "VirtualHost": "/",
-    "Port": 32778,
-    "Hostnames": [ "localhost" ]
-}

@@ -27,6 +27,7 @@ namespace bio_eko_fit_api.Controllers
         [HttpGet]
         public async Task<ActionResult<GetProductsResponse>> Get()
         {
+            Console.WriteLine("Dupa");
             return await _client.RequestAsync<GetProductsRequest, GetProductsResponse>(new GetProductsRequest());
         }
 
@@ -39,6 +40,7 @@ namespace bio_eko_fit_api.Controllers
         [HttpPost]
         public async Task<bool> Post([FromBody] Product product)
         {
+            Console.WriteLine("Dupa 2");
             return await _client.RequestAsync<CreateProductRequest, bool>(new CreateProductRequest { Name = product.Name } );
         }
 

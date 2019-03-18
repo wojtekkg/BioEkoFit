@@ -8,7 +8,7 @@ using RawRabbit.vNext;
 
 namespace bio_eko_fit
 {
-     public class Startup
+    public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
