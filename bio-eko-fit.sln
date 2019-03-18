@@ -7,25 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bio-eko-fit", "Src\bio-eko-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bio-eko-fit-api", "Src\bio-eko-fit-api\bio-eko-fit-api.csproj", "{0364A0CF-A4CD-46D7-90D6-5630D26C80B5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bio-eko-fit-meals", "Src\bio-eko-fit-meals\bio-eko-fit-meals.csproj", "{4172DF09-F8FB-4575-B68D-1321882F5EA9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bio-eko-fit-menus", "Src\bio-eko-fit-menus\bio-eko-fit-menus.csproj", "{316F0812-3685-4147-BF4B-8C1A9072EC0E}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bio-eko-fit-products", "Src\bio-eko-fit-products\bio-eko-fit-products.csproj", "{6BACDA20-A7F1-4574-83DF-A287148BE821}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{1E512800-4BAA-491E-9859-7374D078D3B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-dto", "Src\bio-eko-fit-dto\bio-eko-fit-dto.csproj", "{637C2BED-83F7-498C-A850-D97F47A9F382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-database", "Src\bio-eko-fit-products-database\bio-eko-fit-products-database.csproj", "{49705745-57D7-4E41-B9E7-E154291917A4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{19E605E4-6D54-45A8-8217-63BA466F8AA0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-products", "Tests\bio-eko-fit-products\bio-eko-fit-products.csproj", "{B95DD3A9-FF5B-4CF5-B478-0F73400E83E4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-meals", "Tests\bio-eko-fit-meals\bio-eko-fit-meals.csproj", "{37F310EC-5BE1-44CB-83EB-D201BCEFF290}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-menus", "Tests\bio-eko-fit-menus\bio-eko-fit-menus.csproj", "{83170422-E9F0-40B9-B682-7480CA29526D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bio-eko-fit-database", "Src\bio-eko-fit-database\bio-eko-fit-database.csproj", "{49705745-57D7-4E41-B9E7-E154291917A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,12 +149,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {836014F6-37AC-4A4B-9FDA-FCC99A006668}
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{637C2BED-83F7-498C-A850-D97F47A9F382} = {1E512800-4BAA-491E-9859-7374D078D3B0}
-		{49705745-57D7-4E41-B9E7-E154291917A4} = {1E512800-4BAA-491E-9859-7374D078D3B0}
-		{B95DD3A9-FF5B-4CF5-B478-0F73400E83E4} = {19E605E4-6D54-45A8-8217-63BA466F8AA0}
-		{37F310EC-5BE1-44CB-83EB-D201BCEFF290} = {19E605E4-6D54-45A8-8217-63BA466F8AA0}
-		{83170422-E9F0-40B9-B682-7480CA29526D} = {19E605E4-6D54-45A8-8217-63BA466F8AA0}
 	EndGlobalSection
 EndGlobal
