@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using bio_eko_fit_database;
 using bio_eko_fit_database.Entities;
 using bio_eko_fit_dto;
+using bio_eko_fit_dto.Common;
 using bio_eko_fit_dto.Meals;
 using RawRabbit;
 using RawRabbit.Context;
@@ -25,16 +26,16 @@ namespace bio_eko_fit.Meals
 
         private void ServiceInitialization()
         {
-            _client.RespondAsync<GetMealsRequest, GetMealsResponse>(GetMeals);
-            _client.RespondAsync<DeleteMealRequest, bool>(DeleteMeal);
-            _client.RespondAsync<CreateMealRequest, bool>(CreateMeal);
-            _client.RespondAsync<UpdateMealRequest, bool>(UpdateMeal);
+            _client.RespondAsync<GetMealsRequest, ResponseMessage>(GetMeals);
+            _client.RespondAsync<DeleteMealRequest, ResponseMessage>(DeleteMeal);
+            _client.RespondAsync<CreateMealRequest, ResponseMessage>(CreateMeal);
+            _client.RespondAsync<UpdateMealRequest, ResponseMessage>(UpdateMeal);
             Console.WriteLine($"{nameof(MealsService)} initialized.");
         }
 
-        private Task<GetMealsResponse> GetMeals(GetMealsRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> GetMeals(GetMealsRequest request, MessageContext msgContext)
         {
-            var response = new GetMealsResponse();
+            var response = new ResponseMessage();
             try
             {
                 using (var context = _contextFactory.CreateDefaultContext())
@@ -44,7 +45,7 @@ namespace bio_eko_fit.Meals
                     {   
                         query = query.Where(x => x.Id == request.Id.Value);
                     }
-                    response.Meals = query.Select(x => new Meal(){ Id = x.Id, Name = x.Name }).ToList();
+                    response.Data = query.Select(x => new Meal(){ Id = x.Id, Name = x.Name }).ToList();
                 }
             }
             catch (Exception ex)
@@ -54,8 +55,9 @@ namespace bio_eko_fit.Meals
             return Task.FromResult(response);
         } 
 
-        private Task<bool> DeleteMeal(DeleteMealRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> DeleteMeal(DeleteMealRequest request, MessageContext msgContext)
         {
+            var response = new ResponseMessage();
             try
             {
                 using (var context = _contextFactory.CreateDefaultContext())
@@ -63,7 +65,7 @@ namespace bio_eko_fit.Meals
                     var meal = context.Meals.FirstOrDefault(x => x.Id == request.Id);
                     if (meal == null)
                     {
-                        return Task.FromResult(false);
+                        return Task.FromResult(response);
                     }
                     var mealRelatedToProducts = context.ProductsForFood.Where(x => x.Meal == meal);
                     var steps = context.Steps.Where(x => x.Meal == meal);
@@ -78,11 +80,12 @@ namespace bio_eko_fit.Meals
             {
                 Console.WriteLine(ex.Message);
             }
-            return Task.FromResult(false);
+            return Task.FromResult(response);
         }
 
-        private Task<bool> CreateMeal(CreateMealRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> CreateMeal(CreateMealRequest request, MessageContext msgContext)
         {
+            var response = new ResponseMessage();
             try
             {
 
@@ -91,11 +94,12 @@ namespace bio_eko_fit.Meals
             {
                 Console.WriteLine(ex.Message);
             }
-            return Task.FromResult(false);
+            return Task.FromResult(response);
         }
 
-        private Task<bool> UpdateMeal(UpdateMealRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> UpdateMeal(UpdateMealRequest request, MessageContext msgContext)
         {
+            var response = new ResponseMessage();
             try
             {
                 
@@ -104,7 +108,7 @@ namespace bio_eko_fit.Meals
             {
                 Console.WriteLine(ex.Message);
             }
-            return Task.FromResult(false);
+            return Task.FromResult(response);
         }
 
     }

@@ -11,7 +11,7 @@ namespace bio_eko_fit_database.Entities
         public MealEntity Meal { get; set; }
 
         [Required]
-        public int ProductId { get; set; }
+        public ProductEntity ProductId { get; set; }
 
         [Required]
         public int Weight { get; set; }

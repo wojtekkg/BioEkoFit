@@ -5,4 +5,8 @@
     <RootNamespace>bio_eko_fit_dto</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="newtonsoft.json" Version="12.0.1" />
+  </ItemGroup>
+
 </Project>

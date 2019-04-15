@@ -12,5 +12,8 @@ namespace bio_eko_fit_database.Entities
 
         [Required]
         public string Description { get; set; }
+        
+        [Required]
+        public int Order { get; set; }
     }
 }
