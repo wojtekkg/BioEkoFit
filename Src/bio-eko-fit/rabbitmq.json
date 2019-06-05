@@ -2,6 +2,6 @@
     "Username": "user",
     "Password": "bitnami",
     "VirtualHost": "/",
-    "Port": 32778,
+    "Port": 32777,
     "Hostnames": [ "localhost" ]
 }

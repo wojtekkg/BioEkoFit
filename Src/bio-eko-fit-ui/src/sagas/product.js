@@ -4,7 +4,7 @@ import { fetchProducts, addProduct, removeProduct } from '../api/product';
 
 function* handleFetchProducts() {
     const result = yield call(fetchProducts);
-    yield put(doAddProducts(result.products));
+    yield put(doAddProducts(result.data));
 }
 
 function* handleAddProduct(action) {
