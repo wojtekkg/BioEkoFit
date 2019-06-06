@@ -41,7 +41,12 @@ namespace bio_eko_fit.Products
                 {   
                     query = query.Where(x => x.Id == request.Id.Value);
                 }
-                response.Data = query.Select(x => new Product(){ Id = x.Id, Name = x.Name }).ToList();
+                var products = query.Select(x => new Product(){ Id = x.Id, Name = x.Name }).ToList();
+                if (products.Count == 0)
+                {
+                    return Task.FromResult(response.TransformToFault(HttpStatusCode.NotFound));
+                }
+                response.Data = products;
             }
             return Task.FromResult(response);
         } 
@@ -62,7 +67,7 @@ namespace bio_eko_fit.Products
             var response = new ResponseMessage();
             if (string.IsNullOrEmpty(request.Name))
             {
-                return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest));
+                return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest, FaultCode.NULL_OR_EMPTY, new string[] {nameof(request.Name)}));
             }
             using (var context = _contextFactory.CreateDefaultContext())
             {
@@ -80,7 +85,7 @@ namespace bio_eko_fit.Products
                 var product = context.Products.FirstOrDefault(x => x.Id == request.Id);
                 if (product == null)
                 {
-                    return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest));
+                    return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest, FaultCode.PRODUCT_FOR_UPDATE_NOT_FOUND ));
                 }
                 product.Name = request.Name;
                 context.SaveChanges();
