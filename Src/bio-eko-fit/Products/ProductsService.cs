@@ -19,8 +19,7 @@ namespace bio_eko_fit.Products
     public class ProductsService : BaseService, IProductsService
     {
         private readonly IProductsRepository _productsRepository;
-        public ProductsService(IBusClient client, ILogger<ProductsService> logger,
-        IProductsRepository productsRepository)
+        public ProductsService(IBusClient client, ILogger<ProductsService> logger, IProductsRepository productsRepository)
         : base(client, logger, nameof(ProductsService))
         {
             _productsRepository = productsRepository ?? throw new ArgumentNullException(nameof(productsRepository));

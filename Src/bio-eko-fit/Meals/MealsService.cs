@@ -19,8 +19,7 @@ namespace bio_eko_fit.Meals
     public class MealsService : BaseService, IMealsService
     {
         private readonly IMealsRepository _mealsRepository;
-        public MealsService(IBusClient client, ILogger<MealsService> logger,
-        IMealsRepository mealsRepository)
+        public MealsService(IBusClient client, ILogger<MealsService> logger, IMealsRepository mealsRepository)
         : base(client, logger, nameof(MealsService))
         {
             _mealsRepository = mealsRepository ?? throw new ArgumentNullException(nameof(mealsRepository));
