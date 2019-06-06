@@ -67,10 +67,10 @@ namespace bio_eko_fit.Meals
                     {
                         return Task.FromResult(response);
                     }
-                    var mealRelatedToProducts = context.ProductsForFood.Where(x => x.Meal == meal);
+                    var productsRelatedToMeal = context.ProductsForFood.Where(x => x.Meal == meal);
                     var steps = context.Steps.Where(x => x.Meal == meal);
                     
-                    context.ProductsForFood.RemoveRange();
+                    context.ProductsForFood.RemoveRange(productsRelatedToMeal);
                     context.Steps.RemoveRange(steps);
                     context.Meals.Remove(meal);
                     context.SaveChanges();
