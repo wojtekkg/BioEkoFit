@@ -70,14 +70,38 @@ namespace bio_eko_fit.Meals
         private Task<ResponseMessage> CreateMeal(CreateMealRequest request, MessageContext msgContext)
         {
             var response = new ResponseMessage();
-
+            if (string.IsNullOrEmpty(request.Name))
+            {
+                return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest, FaultCode.NULL_OR_EMPTY, new string[] {nameof(request.Name)}));
+            }
+            using (var context = _contextFactory.CreateDefaultContext())
+            {
+                context.Meals.Add(new MealEntity
+                {
+                    Name = request.Name
+                });
+                context.SaveChanges();
+            }
             return Task.FromResult(response);
         }
 
         private Task<ResponseMessage> UpdateMeal(UpdateMealRequest request, MessageContext msgContext)
         {
             var response = new ResponseMessage();
-
+            if (request.Meal == null)
+            {
+                return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest));
+            }
+            if (string.IsNullOrEmpty(request.Meal.Name))
+            {
+                return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest, FaultCode.NULL_OR_EMPTY, new string[] {nameof(request.Meal.Name)}));
+            }
+            using (var context = _contextFactory.CreateDefaultContext())
+            {
+                var meal = context.Meals.FirstOrDefault(x => x.Id == request.Meal.Id);
+                meal.Name = request.Meal.Name;
+                context.SaveChanges();
+            }
             return Task.FromResult(response);
         }
 
