@@ -28,7 +28,6 @@ namespace bio_eko_fit_api.Controllers
         [HttpGet]
         public async Task<ActionResult<ResponseMessage>> Get()
         {
-            Console.WriteLine("Dupa");
             return await _client.RequestAsync<GetProductsRequest, ResponseMessage>(new GetProductsRequest());
         }
 
@@ -41,14 +40,13 @@ namespace bio_eko_fit_api.Controllers
         [HttpPost]
         public async Task<ActionResult<ResponseMessage>> Post([FromBody] Product product)
         {
-            Console.WriteLine("Dupa 2");
-            return await _client.RequestAsync<CreateProductRequest, ResponseMessage>(new CreateProductRequest { Name = product.Name } );
+            return await _client.RequestAsync<CreateProductRequest, ResponseMessage>(new CreateProductRequest { Product = product } );
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ResponseMessage>> Put(int id, [FromBody] string value)
+        public async Task<ActionResult<ResponseMessage>> Put([FromBody] Product product)
         {
-            return await _client.RequestAsync<UpdateProductRequest, ResponseMessage>(new UpdateProductRequest { Id = id, Name = value });
+            return await _client.RequestAsync<UpdateProductRequest, ResponseMessage>(new UpdateProductRequest { Product = product });
         }
 
         [HttpDelete("{id}")]
