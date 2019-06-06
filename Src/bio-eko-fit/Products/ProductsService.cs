@@ -62,7 +62,7 @@ namespace bio_eko_fit.Products
             var response = new ResponseMessage();
             if (string.IsNullOrEmpty(request.Name))
             {
-                return Task.FromResult(response);
+                return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest));
             }
             using (var context = _contextFactory.CreateDefaultContext())
             {
@@ -80,7 +80,7 @@ namespace bio_eko_fit.Products
                 var product = context.Products.FirstOrDefault(x => x.Id == request.Id);
                 if (product == null)
                 {
-                    return Task.FromResult(response);
+                    return Task.FromResult(response.TransformToFault(HttpStatusCode.BadRequest));
                 }
                 product.Name = request.Name;
                 context.SaveChanges();
