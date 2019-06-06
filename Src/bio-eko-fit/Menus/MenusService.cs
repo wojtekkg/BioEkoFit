@@ -1,24 +1,24 @@
 using System;
 using System.Threading.Tasks;
+using bio_eko_fit_database;
 using bio_eko_fit_dto;
+using Microsoft.Extensions.Logging;
 using RawRabbit;
 using RawRabbit.Context;
 
 namespace bio_eko_fit.Menus
 {
-    public class MenusService : IMenusService
+    public class MenusService : BaseService, IMenusService
     {
-        private readonly IBusClient _client;
 
-        public MenusService(IBusClient client)
+        public MenusService(IBusClient client, IContextFactory contextFactory, ILogger<MenusService> logger)
+        : base(client, contextFactory, logger, nameof(MenusService))
         {
-            _client = client ?? throw new ArgumentNullException(nameof(client));
-            ServiceInitialization();
         }
     
-        private void ServiceInitialization()
+        protected override void InitializeServices()
         {
-            Console.WriteLine($"{nameof(MenusService)} initialized.");
+            base.InitializeServices();
         }
     }
 }
