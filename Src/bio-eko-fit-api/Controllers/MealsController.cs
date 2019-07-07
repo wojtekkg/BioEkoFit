@@ -10,6 +10,8 @@ using RawRabbit.Configuration;
 using RawRabbit.vNext;
 using Microsoft.Extensions.Configuration;
 using RawRabbit;
+using bio_eko_fit_dto.Common;
+using bio_eko_fit_dto.Meals;
 
 namespace bio_eko_fit_api.Controllers
 {
@@ -24,9 +26,9 @@ namespace bio_eko_fit_api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetMeals()
+        public async Task<ActionResult<ResponseMessage>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await _client.RequestAsync<GetMealsRequest, ResponseMessage>(new GetMealsRequest());
         }
 
         [HttpGet("{id}")]

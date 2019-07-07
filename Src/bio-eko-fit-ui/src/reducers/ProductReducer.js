@@ -6,7 +6,6 @@ const applyAddProducts = (state, action) =>
     action.products;
 
 function productReducer(state = INITIAL_STATE, action) {
-    console.log(action);
     switch(action.type){
         case PRODUCTS_ADD: {
             return applyAddProducts(state, action);
