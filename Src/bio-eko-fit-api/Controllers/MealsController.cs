@@ -2,12 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
-using System.Text;
-using bio_eko_fit_dto;
-using Microsoft.Extensions.Configuration;
-using bio_eko_fit_dto.Common;
-using bio_eko_fit_dto.Meals;
+using Microsoft.Extensions.Logging;
 
 namespace bio_eko_fit_api.Controllers
 {

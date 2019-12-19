@@ -20,7 +20,6 @@ namespace bio_eko_fit
             var host = WebHost.CreateDefaultBuilder(args)
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
-            .UseIISIntegration()
             .UseProductsService()
             .UseMealsService()
             .UseMenusService()
