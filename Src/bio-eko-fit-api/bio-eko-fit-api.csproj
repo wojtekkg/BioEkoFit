@@ -9,18 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="rabbitmq.client" Version="5.1.0" />
-    <PackageReference Include="rawrabbit" Version="1.10.4" />
-    <PackageReference Include="rawrabbit.vnext" Version="1.10.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\bio-eko-fit-dto\bio-eko-fit-dto.csproj" />
+    <ProjectReference Include="..\bio-eko-fit\bio-eko-fit.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="rabbitmq.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
 </Project>

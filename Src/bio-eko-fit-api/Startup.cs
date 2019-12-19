@@ -10,8 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using RawRabbit.Configuration;
-using RawRabbit.vNext;
 
 namespace bio_eko_fit_api
 {
@@ -33,10 +31,6 @@ namespace bio_eko_fit_api
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             }));
-            services.AddRawRabbit(cfg => 
-            {
-                cfg.AddJsonFile("rabbitmq.json");
-            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { InputGroup, FormControl, Card, Button, Accordion } from 'react-bootstrap';
 import Steps from './Steps';
+import ProductsAccordion from './ProductsAccordion';
 
 class AddMeal extends Component { 
     constructor(props) {
@@ -43,7 +44,11 @@ class AddMeal extends Component {
                             </Accordion.Toggle>
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
-                            <Card.Body>Tutaj produkty potrzebne do wykonania posiłku</Card.Body>
+                            <Card.Body>
+                                <ProductsAccordion products={[ { name: "banan", weight: "50g" }, { name: "czosnek", weight: "100g" } ]}>
+                                    
+                                </ProductsAccordion>
+                            </Card.Body>
                         </Accordion.Collapse>
                     </Card>
                     <Card>

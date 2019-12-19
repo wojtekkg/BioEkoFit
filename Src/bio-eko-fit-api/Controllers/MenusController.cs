@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using RabbitMQ.Client;
 using System.Text;
 using bio_eko_fit_dto;
-using RawRabbit.Configuration;
-using RawRabbit.vNext;
 using Microsoft.Extensions.Configuration;
-using RawRabbit;
 
 namespace bio_eko_fit_api.Controllers
 {
@@ -17,10 +13,8 @@ namespace bio_eko_fit_api.Controllers
     [ApiController]
     public class MenusController : ControllerBase
     {
-        private readonly IBusClient _client;
-        public MenusController(IBusClient client)
+        public MenusController()
         {
-            _client = client;
         }
 
         [HttpGet]
