@@ -25,7 +25,7 @@ namespace bio_eko_fit
             .UseMenusService()
             .UseBioEkoFitDatabase("User ID=postgres;Password=1234Qwer;Host=localhost;Port=5432;Database=BioEkoFit")
             .UseStartup<Startup>()
-            .UseUrls("http://localhost:5010/")
+            .UseUrls("https://localhost:5001/")
             .ConfigureAppConfiguration((hostingContext, config) => 
             {
                 var env = hostingContext.HostingEnvironment;

@@ -41,7 +41,7 @@ namespace bio_eko_fit.Products
             return Ok();
         }
 
-        public Task<ResponseMessage> InsertProduct(CreateProductRequest request)
+        public Task<ResponseMessage> CreateProduct(CreateProductRequest request)
         {
             if (string.IsNullOrEmpty(request.Product.Name))
             {

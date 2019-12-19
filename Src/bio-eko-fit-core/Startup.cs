@@ -47,8 +47,6 @@ namespace bio_eko_fit
                 app.UseHsts();
             }
             app.UseCors("MyPolicy");
-            app.UseHttpsRedirection();
-
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

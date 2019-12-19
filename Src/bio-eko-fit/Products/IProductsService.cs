@@ -8,7 +8,7 @@ namespace bio_eko_fit.Products
     {
          Task<ResponseMessage> GetProducts(GetProductsRequest request);
          Task<ResponseMessage> DeleteProduct(DeleteProductRequest request);
-         Task<ResponseMessage> InsertProduct(CreateProductRequest request);
+         Task<ResponseMessage> CreateProduct(CreateProductRequest request);
          Task<ResponseMessage> UpdateProduct(UpdateProductRequest request);
     }
 }

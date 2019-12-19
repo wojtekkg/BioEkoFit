@@ -21,34 +21,34 @@ namespace bio_eko_fit_api.Controllers
             _productsService = productsService;
         }
 
-         [HttpGet]
-         public async Task<ActionResult<ResponseMessage>> Get()
-         {
+        [HttpGet]
+        public async Task<ActionResult<ResponseMessage>> Get()
+        {
              return await _productsService.GetProducts(new GetProductsRequest());
         }
 
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<ResponseMessage>> Get(int id)
-        // {
-        //     //return await _client.RequestAsync<GetProductsRequest, ResponseMessage>(new GetProductsRequest { Id = id });
-        // }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ResponseMessage>> Get(int id)
+        {
+            return await _productsService.GetProducts(new GetProductsRequest { Id = id });
+        }
         
-        // [HttpPost]
-        // public async Task<ActionResult<ResponseMessage>> Post([FromBody] Product product)
-        // {
-        //     //return await _client.RequestAsync<CreateProductRequest, ResponseMessage>(new CreateProductRequest { Product = product } );
-        // }
+        [HttpPost]
+        public async Task<ActionResult<ResponseMessage>> Post([FromBody] Product product)
+        {
+            return await _productsService.CreateProduct(new CreateProductRequest { Product = product });
+        }
 
-        // [HttpPut("{id}")]
-        // public async Task<ActionResult<ResponseMessage>> Put([FromBody] Product product)
-        // {
-        //     //return await _client.RequestAsync<UpdateProductRequest, ResponseMessage>(new UpdateProductRequest { Product = product });
-        // }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<ResponseMessage>> Put([FromBody] Product product)
+        {
+            return await _productsService.UpdateProduct(new UpdateProductRequest { Product = product });
+        }
 
-        // [HttpDelete("{id}")]
-        // public async Task<ActionResult<ResponseMessage>> Delete(int id)
-        // {
-        //     //return await _client.RequestAsync<DeleteProductRequest, ResponseMessage>(new DeleteProductRequest { Id = id });
-        // }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ResponseMessage>> Delete(int id)
+        {
+            return await _productsService.DeleteProduct(new DeleteProductRequest { Id = id });
+        }
     }
 }
