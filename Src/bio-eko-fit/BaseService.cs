@@ -4,21 +4,18 @@ using bio_eko_fit_database;
 using bio_eko_fit_dto.Common;
 using Microsoft.Extensions.Logging;
 using bio_eko_fit_dto.Extensions;
-using RawRabbit;
 using System.Net;
 
 namespace bio_eko_fit
 {
     public abstract class BaseService
     {        
-        protected readonly IBusClient _client;
         protected readonly ILogger _logger;
         private string _serviceName;
 
-        public BaseService(IBusClient client, ILogger logger, string serviceName)
+        public BaseService(ILogger logger, string serviceName)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _client = client ?? throw new ArgumentNullException(nameof(client));
             _serviceName = serviceName;
             InitializeServices();
         }
@@ -41,7 +38,7 @@ namespace bio_eko_fit
             }
         }
 
-        private ResponseMessage CreateFaultMessage(HttpStatusCode statusCode = HttpStatusCode.InternalServerError, string message = FaultCode.INTERNAL_SERVER_ERROR, string[] parameters = null)
+        protected ResponseMessage CreateFaultMessage(HttpStatusCode statusCode = HttpStatusCode.InternalServerError, string message = FaultCode.INTERNAL_SERVER_ERROR, string[] parameters = null)
         {
             return new ResponseMessage
             {

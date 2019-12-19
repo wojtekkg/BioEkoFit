@@ -20,6 +20,7 @@ namespace bio_eko_fit_api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> GetMenus()
         {
+            Console.WriteLine("DDDD");
             return new string[] { "value1", "value2" };
         }
 

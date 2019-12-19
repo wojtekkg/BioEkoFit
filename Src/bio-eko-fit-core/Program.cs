@@ -7,6 +7,7 @@ using bio_eko_fit_products.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore;
 
 namespace bio_eko_fit
 {
@@ -16,7 +17,7 @@ namespace bio_eko_fit
         {
             var builder = new ConfigurationBuilder();
 
-            var host = new WebHostBuilder()
+            var host = WebHost.CreateDefaultBuilder(args)
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
@@ -41,13 +42,6 @@ namespace bio_eko_fit
             })
             .Build();
 
-            //TODO: Find a way to run service without that, or with that but inside UseProductsService() method
-            host.Services.GetService(typeof(IProductsService));
-            Console.WriteLine("Products service started!");
-            host.Services.GetService(typeof(IMealsService));
-            Console.WriteLine("Meals service started!");
-            host.Services.GetService(typeof(IMenusService));
-            Console.WriteLine("Menus service started!");
             host.Run();
         }
     }

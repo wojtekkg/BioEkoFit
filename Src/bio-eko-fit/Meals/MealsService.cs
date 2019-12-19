@@ -9,8 +9,6 @@ using bio_eko_fit_dto.Common;
 using bio_eko_fit_dto.Meals;
 using Microsoft.Extensions.Logging;
 using bio_eko_fit_dto.Extensions;
-using RawRabbit;
-using RawRabbit.Context;
 using System.Net;
 using bio_eko_fit_database.Meals;
 
@@ -19,22 +17,13 @@ namespace bio_eko_fit.Meals
     public class MealsService : BaseService, IMealsService
     {
         private readonly IMealsRepository _mealsRepository;
-        public MealsService(IBusClient client, ILogger<MealsService> logger, IMealsRepository mealsRepository)
-        : base(client, logger, nameof(MealsService))
+        public MealsService(ILogger<MealsService> logger, IMealsRepository mealsRepository)
+        : base(logger, nameof(MealsService))
         {
             _mealsRepository = mealsRepository ?? throw new ArgumentNullException(nameof(mealsRepository));
         }
 
-        protected override void InitializeServices()
-        {
-            _client.RespondAsync<GetMealsRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => GetMeals(req, msgContext)));
-            _client.RespondAsync<DeleteMealRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => DeleteMeal(req, msgContext)));
-            _client.RespondAsync<CreateMealRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => CreateMeal(req, msgContext)));
-            _client.RespondAsync<UpdateMealRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => UpdateMeal(req, msgContext)));
-            base.InitializeServices();
-        }
-
-        private Task<ResponseMessage> GetMeals(GetMealsRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> GetMeals(GetMealsRequest request)
         {
             var response = new ResponseMessage();
             var meals = _mealsRepository.GetMeals(request.Id);
@@ -46,13 +35,13 @@ namespace bio_eko_fit.Meals
             return Task.FromResult(response);
         } 
 
-        private Task<ResponseMessage> DeleteMeal(DeleteMealRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> DeleteMeal(DeleteMealRequest request)
         {
             _mealsRepository.DeleteMeal(request.Id);
             return Ok();
         }
 
-        private Task<ResponseMessage> CreateMeal(CreateMealRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> CreateMeal(CreateMealRequest request)
         {
             if (string.IsNullOrEmpty(request.Meal.Name))
             {
@@ -62,7 +51,7 @@ namespace bio_eko_fit.Meals
             return Ok();
         }
 
-        private Task<ResponseMessage> UpdateMeal(UpdateMealRequest request, MessageContext msgContext)
+        private Task<ResponseMessage> UpdateMeal(UpdateMealRequest request)
         {
             if (request.Meal == null)
             {

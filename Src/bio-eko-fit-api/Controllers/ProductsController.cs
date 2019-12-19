@@ -23,12 +23,11 @@ namespace bio_eko_fit_api.Controllers
             _productsService = productsService;
         }
 
-        // [HttpGet]
-        // public async Task<ActionResult<ResponseMessage>> Get()
-        // {
-        //     _productsService.GetProducts();
-        //     //return await _client.RequestAsync<GetProductsRequest, ResponseMessage>(new GetProductsRequest());
-        // }
+         [HttpGet]
+         public async Task<ActionResult<ResponseMessage>> Get()
+         {
+             return await _productsService.GetProducts(new GetProductsRequest());
+        }
 
         // [HttpGet("{id}")]
         // public async Task<ActionResult<ResponseMessage>> Get(int id)

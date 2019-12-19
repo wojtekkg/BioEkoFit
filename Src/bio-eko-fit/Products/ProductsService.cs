@@ -7,8 +7,6 @@ using bio_eko_fit_dto.Products;
 using bio_eko_fit_database;
 using bio_eko_fit_database.Entities;
 using bio_eko_fit_dto.Extensions;
-using RawRabbit;
-using RawRabbit.Context;
 using bio_eko_fit_dto.Common;
 using System.Net;
 using Microsoft.Extensions.Logging;
@@ -19,22 +17,13 @@ namespace bio_eko_fit.Products
     public class ProductsService : BaseService, IProductsService
     {
         private readonly IProductsRepository _productsRepository;
-        public ProductsService(IBusClient client, ILogger<ProductsService> logger, IProductsRepository productsRepository)
-        : base(client, logger, nameof(ProductsService))
+        public ProductsService(ILogger<ProductsService> logger, IProductsRepository productsRepository)
+        : base(logger, nameof(ProductsService))
         {
             _productsRepository = productsRepository ?? throw new ArgumentNullException(nameof(productsRepository));
         }
 
-        protected override void InitializeServices()
-        {
-            _client.RespondAsync<GetProductsRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => GetProducts(req, msgContext)));
-            _client.RespondAsync<DeleteProductRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => DeleteProduct(req, msgContext)));
-            _client.RespondAsync<CreateProductRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => InsertProduct(req, msgContext)));
-            _client.RespondAsync<UpdateProductRequest, ResponseMessage>((req, msgContext) => HandleRequest(() => UpdateProduct(req, msgContext)));
-            base.InitializeServices();
-        }
-
-        private Task<ResponseMessage> GetProducts(GetProductsRequest request, MessageContext msgContext)
+        public Task<ResponseMessage> GetProducts(GetProductsRequest request)
         {
             var response = new ResponseMessage();
             var products = _productsRepository.GetProducts(request.Id);
@@ -46,13 +35,13 @@ namespace bio_eko_fit.Products
             return Task.FromResult(response);
         } 
 
-        private Task<ResponseMessage> DeleteProduct(DeleteProductRequest request, MessageContext msgContext)
+        public Task<ResponseMessage> DeleteProduct(DeleteProductRequest request)
         {
             _productsRepository.DeleteProduct(request.Id);
             return Ok();
         }
 
-        private Task<ResponseMessage> InsertProduct(CreateProductRequest request, MessageContext msgContext)
+        public Task<ResponseMessage> InsertProduct(CreateProductRequest request)
         {
             if (string.IsNullOrEmpty(request.Product.Name))
             {
@@ -62,7 +51,7 @@ namespace bio_eko_fit.Products
             return Ok();
         }
 
-        private Task<ResponseMessage> UpdateProduct(UpdateProductRequest request, MessageContext msgContext)
+        public Task<ResponseMessage> UpdateProduct(UpdateProductRequest request)
         {
             _productsRepository.UpdateProduct(request.Product);   
             return Ok();

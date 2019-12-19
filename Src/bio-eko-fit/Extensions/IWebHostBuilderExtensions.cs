@@ -19,7 +19,7 @@ namespace bio_eko_fit_products.Extensions
         {
             builder.ConfigureServices(services =>
             {
-                services.AddSingleton<IProductsService, ProductsService>();
+                services.AddTransient<IProductsService, ProductsService>();
             });
             return builder;
         } 
@@ -28,7 +28,7 @@ namespace bio_eko_fit_products.Extensions
         {
             builder.ConfigureServices(services =>
             {
-                services.AddSingleton<IMealsService, MealsService>();
+                services.AddTransient<IMealsService, MealsService>();
             });
             return builder;
         } 
@@ -37,7 +37,7 @@ namespace bio_eko_fit_products.Extensions
         {
             builder.ConfigureServices(services =>
             {
-                services.AddSingleton<IMenusService, MenusService>();
+                services.AddTransient<IMenusService, MenusService>();
             });
             return builder;
         } 
