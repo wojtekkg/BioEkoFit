@@ -1,4 +1,4 @@
-import { PRODUCTS_REMOVE, PRODUCTS_ADD, PRODUCTS_FETCH, PRODUCTS_ADD_NEW } from '../constants/actionTypes';
+import { PRODUCTS_REMOVE, PRODUCTS_ADD, PRODUCTS_FETCH, PRODUCTS_ADD_NEW_TO_UI } from '../constants/actionTypes';
 
 const doRemoveProduct = id => ({
     type: PRODUCTS_REMOVE,
@@ -16,7 +16,7 @@ const doFetchProducts = query => ({
 });
 
 const doAddNewProduct = product => ({
-    type: PRODUCTS_ADD_NEW,
+    type: PRODUCTS_ADD_NEW_TO_UI,
     product
 });
 

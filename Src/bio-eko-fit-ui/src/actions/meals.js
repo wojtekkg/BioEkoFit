@@ -1,4 +1,4 @@
-import { MEALS_REMOVE, MEALS_ADD, MEALS_FETCH, MEALS_ADD_NEW } from '../constants/actionTypes';
+import { MEALS_REMOVE, MEALS_ADD, MEALS_FETCH, MEALS_ADD_NEW_TO_UI } from '../constants/actionTypes';
 
 const doRemoveMeal = id => ({
     type: MEALS_REMOVE,
@@ -16,7 +16,7 @@ const doFetchMeals = query => ({
 });
 
 const doAddNewMeal = meal => ({
-    type: MEALS_ADD_NEW,
+    type: MEALS_ADD_NEW_TO_UI,
     meal
 });
 
