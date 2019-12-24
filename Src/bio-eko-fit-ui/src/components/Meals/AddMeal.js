@@ -45,8 +45,7 @@ class AddMeal extends Component {
                         </Card.Header>
                         <Accordion.Collapse eventKey="1">
                             <Card.Body>
-                                <ProductsAccordion products={[ { name: "banan", weight: "50g" }, { name: "czosnek", weight: "100g" } ]}>
-                                    
+                                <ProductsAccordion>
                                 </ProductsAccordion>
                             </Card.Body>
                         </Accordion.Collapse>

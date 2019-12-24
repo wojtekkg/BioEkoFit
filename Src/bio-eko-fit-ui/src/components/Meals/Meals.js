@@ -50,13 +50,7 @@ class Meals extends Component{
         event.preventDefault();
       }
 
-    applyMealName(name){
-        this.setState({
-            meal: {
-                name
-            }
-        });
-    }
+
 
     handleAddMeal(){
         this.props.onAddMeal(this.state.meal);
@@ -76,7 +70,7 @@ class Meals extends Component{
                     onAcceptLabel="Dodaj"
                     header="Tworzenie nowego posiłku"   
                 >
-                <AddMeal applyMealName={this.applyMealName.bind(this)}/>
+                <AddMeal />
                 </CommonModal>
             </form>
             </div>
