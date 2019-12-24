@@ -28,11 +28,10 @@ class ProductsAccordion extends Component {
         this.state = {
             products: [],
         }
-        this.handleAddProductToMeal = this.handleAddProductToMeal.bind(this);
     }
 
-    handleAddProductToMeal(data){
-        console.log(data);
+    handleAddProductToMeal(product){
+        console.log(product);
     }
 
     render() {
@@ -54,7 +53,8 @@ class ProductsAccordion extends Component {
                     isValid,
                     errors,
                 }) => (
-                    <Form as={Row} noValidate onSubmit={handleSubmit}>
+                    <Form noValidate onSubmit={handleSubmit}>
+                        <Field as={Row}>
 
                         <Form.Group as={Col} md="6" controlId="validationFormik05">
                             <Field 
@@ -63,7 +63,7 @@ class ProductsAccordion extends Component {
                                 onBlur={handleBlur}
                                 onChange={handleChange}
                                 isInvalid={!!errors.productName}
-                            >
+                                >
                                 {({field, form }) =>(
                                     <Typeahead
                                     id="hire-person-select"
@@ -93,19 +93,33 @@ class ProductsAccordion extends Component {
                             value={values.productWeight}
                             onChange={handleChange}
                             isInvalid={!!errors.productWeight}
-                        />
+                            />
 
                         <Form.Control.Feedback type="invalid">
                             {errors.productWeight}
                         </Form.Control.Feedback>
-                        
                         </Form.Group>
-                        <Form.Group as={Col} md="3">
-                            <Button type="submit">Dodaj produkt</Button>
-                        </Form.Group>
+                        <Field as={Col} md="3">
+                            <Button onClick={this.props.handleAddProductToMeal} type="submit">Dodaj produkt</Button>
+                        </Field>
+
+                        </Field>
                     </Form>               
                 )}
             </Formik>
+
+
+
+
+
+
+
+
+
+
+
+
+
             <table>
                 {this.state.products.map(product =>
                     <tr>
