@@ -28,10 +28,14 @@ class ProductsAccordion extends Component {
         this.state = {
             products: [],
         }
+        this.handleAddProductToMeal = this.handleAddProductToMeal.bind(this);
     }
 
-    handleAddProductToMeal(product){
-        console.log(product);
+    handleAddProductToMeal(data){
+        console.log(data);
+        this.setState({
+            products: this.state.products.concat({ "name": data.productName.name, "weight": data.productWeight })
+        })
     }
 
     render() {
@@ -107,19 +111,6 @@ class ProductsAccordion extends Component {
                     </Form>               
                 )}
             </Formik>
-
-
-
-
-
-
-
-
-
-
-
-
-
             <table>
                 {this.state.products.map(product =>
                     <tr>
