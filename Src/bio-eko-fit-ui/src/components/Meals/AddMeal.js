@@ -58,8 +58,7 @@ class AddMeal extends Component {
                         </Card.Header>
                         <Accordion.Collapse eventKey="2">
                             <Card.Body>
-                                <Steps steps={[ {description: "Pierw obierz", order: 2}, { description: "Później pokrój", order: 1}]}>
-                                    
+                                <Steps>                                   
                                 </Steps>
                             </Card.Body>
                         </Accordion.Collapse>

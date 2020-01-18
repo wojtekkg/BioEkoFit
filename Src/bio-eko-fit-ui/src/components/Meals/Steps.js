@@ -1,35 +1,82 @@
 import React, { Component } from 'react';
-import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import { Button, Form, Col, Row } from 'react-bootstrap';
+import { Formik, Field } from 'formik';
+import * as yup from 'yup';
 
-
+const schema = yup.object({
+    stepDescription: yup.string().required("To pole jest wymagane"),
+  });
 
 class Steps extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            stepToAdd: null,
-            steps: this.props.steps,
+            steps: [],
+            key: 1,
         };
-        console.log(this.state.steps);
+        this.handleAddStepToMeal = this.handleAddStepToMeal.bind(this);
     }
-
+    
+    handleAddStepToMeal(data){
+        console.log(this.state.steps);
+        this.setState((prevState, props) => ({
+            key: prevState.key + 1,
+            steps: prevState.steps.concat({ key: prevState.key, "description": data.stepDescription })
+        }))
+    }
 
     render() {
         return <div>
-            <InputGroup className="mb-3">
-                <FormControl
-                    placeholder="Opis kroku"
-                    aria-label="Opis kroku"
-                    aria-describedby="basic-addon1"
-                    onChange={this.onChange}
-                />
-                <Button type="submit">Dodaj krok</Button>
-            </InputGroup>
+            <Formik
+                validationSchema={schema}
+                onSubmit={this.handleAddStepToMeal}
+                initialValues={{
+                    stepDescription: '',
+                }}
+                >
+                {({
+                    handleSubmit,
+                    handleChange,
+                    handleBlur,
+                    values,
+                    touched,
+                    isValid,
+                    errors,
+                }) => (
+                    <Form noValidate onSubmit={handleSubmit}>
+                        <Field as={Row}>
+                            <Form.Group as={Col} md="9" controlId="validationFormik06">
+                            <Form.Control
+                                type="text"
+                                placeholder="Opis kroku"
+                                name="stepDescription"
+                                value={values.stepDescription}
+                                onChange={handleChange}
+                                isInvalid={!!errors.stepDescription}
+                                />
+
+                            <Form.Control.Feedback type="invalid">
+                                {errors.stepDescription}
+                            </Form.Control.Feedback>
+                            </Form.Group>
+                            <Field as={Col} md="3">
+                                <Button type="submit">Dodaj krok</Button>
+                            </Field>
+                        </Field>
+                    </Form>               
+                )}
+            </Formik>
             <br />
-            {this.props.steps.sort((a,b) => a.order - b.order).map(step =>
-                <div>{step.order}. {step.description}</div>
-            )}
+            <table>
+                <tbody>
+                    {this.state.steps.sort((a,b) => a.key - b.key).map(step => 
+                            <tr key={step.key}>
+                                <td>{step.key}. {step.description}</td>
+                            </tr>
+                        )}
+                </tbody>
+            </table>
         </div>
     }
 }
