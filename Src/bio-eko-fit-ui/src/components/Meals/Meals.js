@@ -41,7 +41,7 @@ class Meals extends Component{
         this.onSubmit = this.onSubmit.bind(this);
     }
 
-      componentDidMount(prevProps) {
+    componentDidMount(prevProps) {
         this.props.onFetchMeals();
     }
 
@@ -49,8 +49,6 @@ class Meals extends Component{
         this.setState(applyShowModal(true));  
         event.preventDefault();
       }
-
-
 
     handleAddMeal(){
         this.props.onAddMeal(this.state.meal);

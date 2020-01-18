@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { InputGroup, FormControl, Button, Form, Col, Row } from 'react-bootstrap';
+import { Button, Form, Col, Row } from 'react-bootstrap';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
-import { isNullOrUndefined } from 'util';
 
 const COLUMNS = {
     name: {
@@ -27,15 +26,16 @@ class ProductsAccordion extends Component {
 
         this.state = {
             products: [],
+            key: 1,
         }
         this.handleAddProductToMeal = this.handleAddProductToMeal.bind(this);
     }
 
     handleAddProductToMeal(data){
-        console.log(data);
-        this.setState({
-            products: this.state.products.concat({ "name": data.productName.name, "weight": data.productWeight })
-        })
+        this.setState((prevState, props) => ({
+            key: prevState.key + 1,
+            products: prevState.products.concat({ key: prevState.key, "name": data.productName.name, "weight": data.productWeight })
+        }))
     }
 
     render() {
@@ -104,7 +104,7 @@ class ProductsAccordion extends Component {
                         </Form.Control.Feedback>
                         </Form.Group>
                         <Field as={Col} md="3">
-                            <Button onClick={this.props.handleAddProductToMeal} type="submit">Dodaj produkt</Button>
+                            <Button type="submit">Dodaj produkt</Button>
                         </Field>
 
                         </Field>
@@ -112,12 +112,14 @@ class ProductsAccordion extends Component {
                 )}
             </Formik>
             <table>
-                {this.state.products.map(product =>
-                    <tr>
-                        <td style={{ width: COLUMNS.name.width }}>{product.name}</td>
-                        <td style={{ width: COLUMNS.weight.width }}>{product.weight}</td>
-                    </tr>
-                )}
+                <tbody>
+                    {this.state.products.map(product =>
+                        <tr key={product.key}>
+                            <td style={{ width: COLUMNS.name.width }}>{product.name}</td>
+                            <td style={{ width: COLUMNS.weight.width }}>{product.weight}</td>
+                        </tr>
+                    )}
+                </tbody>
             </table>
              
         </div>
