@@ -6,12 +6,17 @@ import ProductsAccordion from './ProductsAccordion';
 class AddMeal extends Component { 
     constructor(props) {
         super(props);
-        this.onChange = this.onChange.bind(this);
+        this.state = {
+            name: ''
+        }
+        this.applyMealName = this.applyMealName.bind(this);
     }
 
-    onChange(event){
+    applyMealName(event){
         const { value } = event.target;
-        this.props.applyMealName(value);
+        this.setState({
+            name: value
+        });
     }
 
     render() {
@@ -31,7 +36,7 @@ class AddMeal extends Component {
                                     placeholder="Nazwa posiłku"
                                     aria-label="Nazwa posiłku"
                                     aria-describedby="basic-addon1"
-                                    onChange={this.onChange}
+                                    onChange={this.applyMealName}
                                 />
                             </InputGroup>
                             </Card.Body>
